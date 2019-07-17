@@ -11,7 +11,12 @@ server = app.listen(port);
 console.log(`Example app listening on port ${port}* !`);
 
 
+
 app.get('/:sicaklik/:nem/:karbondioksit',login.addParams);
+app.get('/', function (req, res) {
+    res.render('home');
+  })
+  
   
 
 

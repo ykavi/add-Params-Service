@@ -12,12 +12,11 @@ console.log(`Example app listening on port ${port}* !`);
 
 
 
-app.get('/:sicaklik/:nem/:karbondioksit',login.addParams);
-app.get('/', function (req, res) {
-    res.render('home');
-  })
-  
-  
+//app.get('/:sicaklik/:nem/:karbondioksit', login.addParams); 
+
+app.get('/', login.addParams)
+
+
 
 
 

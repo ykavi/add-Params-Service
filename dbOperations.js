@@ -15,14 +15,19 @@ pool2.on('error', err => {
 
 module.exports.addParams = function (req, res) {
     return pool2Connect.then((pool) => {
-        pool.request().query("insert into tbl_degerler VALUES (" + req.params.sicaklik + "," + req.params.nem + "," + req.params.karbondioksit + ")", function (err, data) {
-                if (err) {
-                    console.log(err);
-                }
-                res.end();
+        pool.request().query("insert into tbl_degerler VALUES (" + req.query.sicaklik + "," + req.query.nem + "," + req.query.karbondioksit + ")", function (err, data) {
+            if (err) {
+                console.log(err);
+            }
+        });
+        pool.request().query("select * from tbl_degerler", function (err, data) {
+            if (err) {
+                console.log(err);
+            }
+            res.render('home', { data: data.recordset });
         });
     }).catch(err => {
         // ... error handler
     });
-    
+
 }
